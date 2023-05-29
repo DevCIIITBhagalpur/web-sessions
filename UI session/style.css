@@ -1,0 +1,239 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(7, 7, 7);
+    overflow: hidden;
+    background-image: url(https://images.unsplash.com/photo-1608178398319-48f814d0750c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=579&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.nav-container {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.235);
+    background-color: rgb(7, 7, 7);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 5;
+}
+
+.nav-container .navbar {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container .navbar .links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 24px;
+    height: 100%;
+}
+
+.nav-container .navbar .links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem; /* 24px; */
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.nav-container .navbar .links a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transition: 500ms;
+    border-radius: 8px;
+}
+
+
+
+.nav-container .navbar .title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.nav-container .navbar .title:hover {
+    transform: scale(1.2);
+}
+
+.nav-container .navbar .links a:hover::after {
+    width:100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+}
+
+.container .left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.container .left h1 {
+    font-size: 4rem; /* 4*16 => 64px */
+    color: white;
+    font-weight: 700;
+    width: 50%;
+}
+
+.container .left p {
+    font-size: 2rem;
+    color: white;
+    font-family: 400;
+    width: 50%;
+} 
+
+.container .left p::selection, .container .left h1::selection, .container .left h2::selection {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.container .left  h2 {
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+    width: 50%;
+    letter-spacing: 4px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+
+.container .left .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 16px;
+    width: 50%;
+    height: 32px;
+    border-radius: 8px;
+    transition: 500ms;  
+    cursor: pointer;
+}
+
+.container .left .btn:hover {
+    background-color: rgba(0, 0, 0, 0.235);
+    color: white;
+    box-shadow: 0 0 16px 4px rgba(255, 255, 255, 0.575);
+}
+
+.container .right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+}
+
+.container .right img {
+    object-fit: contain;
+    width: 60%;
+    aspect-ratio: 1/1;
+    transition: 2.5s;
+    filter: brightness(2) contrast(2) drop-shadow(0 0 32px rgba(255, 255, 255, 0.575));
+}
+
+.container .right img:hover {
+    filter:brightness(10) contrast(10) drop-shadow(0 0 16px rgb(255, 255, 255)) hue-rotate(360deg) blur(20px)  ;
+    transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 689px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+    }
+
+    .container .left,
+    .container .right {
+        width: 100%;
+        z-index: 2;
+    }
+
+    .container .right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .container .right img{
+        width:80%;
+    }
+
+    .container .left {
+        background-color: rgba(0, 0, 0, 0.374);
+        backdrop-filter: blur(2px);
+        align-items: flex-start;
+        padding-left: 2rem;
+    }
+
+    .container .left h1, .container .left p,.container .left .btn {
+        width:80%;
+        font-size: 1.5rem;
+    }
+
+    .container .left .btn {
+        width:256px;
+    }
+
+    .container .left h1 {
+        font-size: 2rem;
+    }
+
+    .container .left h2 {
+        width:80%;
+        font-size: 1.5rem;
+        letter-spacing: 3px  ;
+    }
+}
